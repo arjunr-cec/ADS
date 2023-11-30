@@ -51,30 +51,60 @@ void insertlast() {
 }
 
 void insertlocation() {
-  struct node *newnode, *temp;
+  struct node *newnode, *temp, *prev;
   int key, i = 1;
+  
   newnode = (struct node *)malloc(sizeof(struct node));
-  newnode->next = NULL;
-  printf("enter the location to insert:");
+  if (newnode == NULL) {
+    printf("No space\n");
+    return;
+  }
+
+  printf("Enter the location to insert: ");
   scanf("%d", &key);
+
+  if (key < 1) {
+    printf("Invalid position. Position must be greater than or equal to 1.\n");
+    free(newnode);
+    return;
+  }
+
+  printf("Enter the element to be inserted: ");
+  scanf("%d", &newnode->data);
+
   temp = head;
-  while (i < key) {
+  prev = NULL;
+
+  if (key == 1) {
+    // Insert at the beginning
+    newnode->next = head;
+    head = newnode;
+    printf("%d inserted at the beginning\n", newnode->data);
+    return;
+  }
+
+  while (i < key && temp != NULL) {
+    prev = temp;
     temp = temp->next;
     i++;
-    if (temp == NULL)
-      break;
   }
-  if (temp == NULL) {
-    printf("the %d value not exist", key);
-    return;
+
+  if (temp == NULL && i <= key) {
+    // Insert at the end
+    prev->next = newnode;
+    newnode->next = NULL;
+    printf("%d inserted at the end\n", newnode->data);
+  } else if (temp == NULL) {
+    printf("Invalid position. List size is smaller than the specified position.\n");
+    free(newnode);
   } else {
-    printf("enter the elements to be inserted:");
-    scanf("%d", &newnode->data);
-    newnode->next = temp->next;
-    temp->next = newnode;
-    printf("%d inserted after %d", newnode->data, key);
+    // Insert at the specified position
+    newnode->next = temp;
+    prev->next = newnode;
+    printf("%d inserted at position %d\n", newnode->data, key);
   }
 }
+
 
 void deletefirst() {
   struct node *temp;
