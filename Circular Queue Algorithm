@@ -1,0 +1,34 @@
+    Create an integer array called CQUE to represent the circular queue and initialize FRONT and REAR to -1.
+
+    Display a menu to the user with the following options:
+        Press 1 to enqueue an element.
+        Press 2 to dequeue an element.
+        Press 3 to display the elements in the circular queue.
+        Press 4 to search for an element in the circular queue.
+        Press 5 to exit the program.
+
+    Accept the user's choice as input.
+
+    If the user chooses 1 to enqueue:
+        Check if the circular queue is full:
+            If full, display "QUEUE IS FULL."
+            If not full, prompt the user for an item and add it to the circular queue using the circular increment for REAR.
+
+    If the user chooses 2 to dequeue:
+        Check if the circular queue is empty:
+            If empty, display "QUEUE IS EMPTY."
+            If not empty, remove the front item from the circular queue using the circular increment for FRONT.
+
+    If the user chooses 3 to display the circular queue:
+        Check if the circular queue is empty:
+            If empty, display "QUEUE IS EMPTY."
+            If not empty, iterate through the circular queue and display each element.
+
+    If the user chooses 4 to search for an element:
+        Check if the circular queue is empty:
+            If empty, display "QUEUE IS EMPTY."
+            If not empty, prompt the user for an element to search for, and iterate through the circular queue to find it.
+
+    If the user chooses 5, exit the program.
+
+    Repeat the menu and operations until the user chooses to exit.
